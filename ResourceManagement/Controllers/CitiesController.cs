@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ResourceManagement.Controllers
 {
+    [Route("api/cities")]
     public class CitiesController : Controller
     {
         public void GetCity(int cityId)
@@ -13,7 +14,7 @@ namespace ResourceManagement.Controllers
 
         }
 
-        [HttpGet("api/cities")]
+        [HttpGet()]
         public JsonResult GetCities()
         {
             return new JsonResult(new List<object>
