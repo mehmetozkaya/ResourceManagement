@@ -9,19 +9,24 @@ namespace ResourceManagement.Controllers
     [Route("api/cities")]
     public class CitiesController : Controller
     {
-        public void GetCity(int cityId)
-        {
-
-        }
-
+        
         [HttpGet()]
-        public JsonResult GetCities()
-        {
-            return new JsonResult(new List<object>
-            {
-                new { id = 1, Name = "Istanbul" },
-                new { id = 2, Name = "Antep" }
-            });
+        public IActionResult GetCities()
+        {            
+            return Ok(CitiesDataStore.Current.Cities);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetCity(int id)
+        {
+            var cityResult = CitiesDataStore.Current.Cities.FirstOrDefault(x => x.Id == id);
+            if(cityResult == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(cityResult);
+        }
+
     }
 }
