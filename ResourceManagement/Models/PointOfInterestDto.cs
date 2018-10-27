@@ -5,15 +5,10 @@ using System.Threading.Tasks;
 
 namespace ResourceManagement.Models
 {
-    public class CityDTO
+    public class PointOfInterestDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public int NumberOfPointOfInterest { get; set; }
-
-        public ICollection<PointOfInterestDto> PointsOfInterest
-            = new List<PointOfInterestDto>();
     }
 }

@@ -30,6 +30,7 @@ namespace ResourceManagement
                 app.UseExceptionHandler();
             }
 
+            app.UseStatusCodePages();
             app.UseMvc();
 
             //app.Run((context) =>
