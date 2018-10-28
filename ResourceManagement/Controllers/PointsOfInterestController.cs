@@ -40,6 +40,7 @@ namespace ResourceManagement.Controllers
             return Ok(pointOfInterest);
         }
 
+        [HttpPost("{cityId}/pointsofinterest")]
         public IActionResult CreatePointOfInterest(int cityId, [FromBody] PointOfInterestForCreationDto pointOfInterest)
         {
             if (pointOfInterest == null)
