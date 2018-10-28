@@ -73,5 +73,11 @@ namespace ResourceManagement.Controllers
 
             return CreatedAtRoute("GetPointOfInterest", new { cityId = cityId, id = finalPointOfInterest.Id }, finalPointOfInterest);
         }
+
+        [HttpPut("{cityId}/pointofinterest/{id}")]
+        public IActionResult UpdatePointOfInterest(int cityId, int id, [FromBody] PointOfInterestForUpdateDto pointOfInterest)
+        {
+
+        }
     }
 }
