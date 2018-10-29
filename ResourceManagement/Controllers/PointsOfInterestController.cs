@@ -13,6 +13,7 @@ namespace ResourceManagement.Controllers
     public class PointsOfInterestController : Controller
     {
         private ILogger<PointsOfInterestController> _logger;
+        
 
         public PointsOfInterestController(ILogger<PointsOfInterestController> logger)
         {
