@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ResourceManagement.Entities;
 using ResourceManagement.Services;
 
 namespace ResourceManagement
@@ -33,6 +35,8 @@ namespace ResourceManagement
             services.AddTransient<IMailService, CloudMailService>();
 #endif
 
+            string connectionString = @"Server=(localdb)\mssqllocaldb;Database=CityInfoDB;Trusted_Connection=True;";
+            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connectionString));            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
