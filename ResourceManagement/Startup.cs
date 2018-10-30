@@ -32,7 +32,9 @@ namespace ResourceManagement
 #endif
 
             string connectionString = Startup.Configuration["ConnectionStrings:DefaultConnection"]; // @"Server=(localdb)\mssqllocaldb;Database=CityInfoDB;Trusted_Connection=True;";
-            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connectionString));            
+            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connectionString));
+
+            services.AddScoped<ICityInfoRepository, CityInfoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,17 @@ namespace ResourceManagement
             cityInfoContext.EnsureSeedDataForContext();
 
             app.UseStatusCodePages();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Entities.City, Models.CityWithoutPointsOfInterestDto>();
+                cfg.CreateMap<Entities.City, Models.CityDTO>();
+                cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestDto>();
+                cfg.CreateMap<Models.PointOfInterestForCreationDto, Entities.PointOfInterest>();
+                cfg.CreateMap<Models.PointOfInterestForUpdateDto, Entities.PointOfInterest>();
+                cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestForUpdateDto>();
+            });
+
             app.UseMvc();
 
             //app.Run((context) =>
