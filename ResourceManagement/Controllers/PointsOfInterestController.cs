@@ -108,8 +108,7 @@ namespace ResourceManagement.Controllers
         }
 
         [HttpPut("{cityId}/pointsofinterest/{id}")]
-        public IActionResult UpdatePointOfInterest(int cityId, int id,
-            [FromBody] PointOfInterestForUpdateDto pointOfInterest)
+        public IActionResult UpdatePointOfInterest(int cityId, int id, [FromBody] PointOfInterestForUpdateDto pointOfInterest)
         {
             if (pointOfInterest == null)
             {
@@ -148,8 +147,7 @@ namespace ResourceManagement.Controllers
         }
         
         [HttpPatch("{cityId}/pointsofinterest/{id}")]
-        public IActionResult PartiallyUpdatePointOfInterest(int cityId, int id,
-            [FromBody] JsonPatchDocument<PointOfInterestForUpdateDto> patchDoc)
+        public IActionResult PartiallyUpdatePointOfInterest(int cityId, int id, [FromBody] JsonPatchDocument<PointOfInterestForUpdateDto> patchDoc)
         {
             if (patchDoc == null)
             {
