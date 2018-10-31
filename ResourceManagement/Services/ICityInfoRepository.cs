@@ -1,4 +1,5 @@
 ﻿using ResourceManagement.Entities;
+using ResourceManagement.Helpers;
 using System.Collections.Generic;
 
 namespace ResourceManagement.Services
@@ -13,5 +14,6 @@ namespace ResourceManagement.Services
         void AddPointOfInterestForCity(int cityId, PointOfInterest pointOfInterest);
         void DeletePointOfInterest(PointOfInterest pointOfInterest);
         bool Save();
+        IEnumerable<City> GetCitiesWithPaging(CityResourceParameters cityResourceParameters);
     }
 }

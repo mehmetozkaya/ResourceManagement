@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using ResourceManagement.Helpers;
 using ResourceManagement.Models;
 using ResourceManagement.Services;
 using System;
@@ -23,6 +24,15 @@ namespace ResourceManagement.Controllers
         public IActionResult GetCities()
         {
             var cityEntities = _cityInfoRepository.GetCities();
+            var results = AutoMapper.Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
+
+            return Ok(results);
+        }
+
+        [HttpGet()]
+        public IActionResult GetCitiesWithPaging(CityResourceParameters cityResourceParameters)
+        {
+            var cityEntities = _cityInfoRepository.GetCitiesWithPaging(cityResourceParameters);
             var results = AutoMapper.Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
 
             return Ok(results);

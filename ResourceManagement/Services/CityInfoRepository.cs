@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ResourceManagement.Entities;
+using ResourceManagement.Helpers;
 
 namespace ResourceManagement.Services
 {
@@ -63,6 +64,16 @@ namespace ResourceManagement.Services
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);
+        }
+
+        public IEnumerable<City> GetCitiesWithPaging(CityResourceParameters cityResourceParameters)
+        {
+            return _context.Cities
+                .OrderBy(c => c.Name)
+                .ThenBy(c => c.Description)
+                .Skip(cityResourceParameters.PageSize * (cityResourceParameters.PageNumber - 1))
+                .Take(cityResourceParameters.PageSize)
+                .ToList();
         }
     }
 }
