@@ -110,7 +110,7 @@ namespace ResourceManagement.Controllers
         [HttpPut("{cityId}/pointsofinterest/{id}")]
         public IActionResult UpdatePointOfInterest(int cityId, int id, [FromBody] PointOfInterestForUpdateDto pointOfInterest)
         {
-            if (pointOfInterest == null)            
+            if (pointOfInterest == null)
                 return BadRequest();
             
 
