@@ -22,14 +22,14 @@ namespace ResourceManagement.Controllers
             _urlHelper = urlHelper;
         }
 
-        [HttpGet()]
-        public IActionResult GetCities()
-        {
-            var cityEntities = _cityInfoRepository.GetCities();
-            var results = AutoMapper.Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
+        //[HttpGet()]
+        //public IActionResult GetCities()
+        //{
+        //    var cityEntities = _cityInfoRepository.GetCities();
+        //    var results = AutoMapper.Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
 
-            return Ok(results);
-        }
+        //    return Ok(results);
+        //}
 
         [HttpGet(Name = "GetCitiesWithPaging")]
         public IActionResult GetCitiesWithPaging(CityResourceParameters cityResourceParameters)
@@ -43,11 +43,15 @@ namespace ResourceManagement.Controllers
             {
                 totalCount = cityEntitiesFromRepo.TotalCount,
                 pageSize = cityEntitiesFromRepo.PageSize,
-
+                currentPage = cityEntitiesFromRepo.CurrentPage,
+                totalPages = cityEntitiesFromRepo.TotalPages,
+                previousPageLink = previousPageLink,
+                nextPageLink = nextPageLink
             };
 
-            var results = AutoMapper.Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
+            Response.Headers.Add("X-Pagination", Newtonsoft.Json.JsonConvert.SerializeObject(paginationMetadata));
 
+            var results = AutoMapper.Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntitiesFromRepo);
             return Ok(results);
         }
 
