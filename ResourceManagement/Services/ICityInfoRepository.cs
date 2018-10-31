@@ -14,6 +14,6 @@ namespace ResourceManagement.Services
         void AddPointOfInterestForCity(int cityId, PointOfInterest pointOfInterest);
         void DeletePointOfInterest(PointOfInterest pointOfInterest);
         bool Save();
-        IEnumerable<City> GetCitiesWithPaging(CityResourceParameters cityResourceParameters);
+        PagedList<City> GetCitiesWithPaging(CityResourceParameters cityResourceParameters);
     }
 }

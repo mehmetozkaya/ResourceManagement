@@ -66,14 +66,13 @@ namespace ResourceManagement.Services
             return (_context.SaveChanges() >= 0);
         }
 
-        public IEnumerable<City> GetCitiesWithPaging(CityResourceParameters cityResourceParameters)
+        public PagedList<City> GetCitiesWithPaging(CityResourceParameters cityResourceParameters)
         {
-            return _context.Cities
+            var collectionBeforePaging = _context.Cities
                 .OrderBy(c => c.Name)
-                .ThenBy(c => c.Description)
-                .Skip(cityResourceParameters.PageSize * (cityResourceParameters.PageNumber - 1))
-                .Take(cityResourceParameters.PageSize)
-                .ToList();
+                .ThenBy(c => c.Description);
+
+            return PagedList<City>.Create(collectionBeforePaging, cityResourceParameters.PageNumber, cityResourceParameters.PageSize);            
         }
     }
 }
