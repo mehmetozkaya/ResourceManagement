@@ -102,6 +102,12 @@ namespace ResourceManagement.Controllers
             var cityWithoutPointsOfInterestResult = Mapper.Map<CityWithoutPointsOfInterestDto>(city);
             return Ok(cityWithoutPointsOfInterestResult);
         }
+        
+        [HttpGet()]
+        public IActionResult GetReason()
+        {
+            return Ok();
+        }
 
     }
 
