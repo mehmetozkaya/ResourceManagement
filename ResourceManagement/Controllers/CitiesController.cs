@@ -63,13 +63,15 @@ namespace ResourceManagement.Controllers
                     return _urlHelper.Link("GetCitiesWithPaging",
                         new
                         {
+                            genre = cityResourceParameters.Genre,
                             pageNumber = cityResourceParameters.PageNumber - 1,
                             pageSize = cityResourceParameters.PageSize
-                        });                    
+                        });
                 case ResourceUriType.NextPage:
                     return _urlHelper.Link("GetCitiesWithPaging",
                        new
                        {
+                           genre = cityResourceParameters.Genre,
                            pageNumber = cityResourceParameters.PageNumber + 1,
                            pageSize = cityResourceParameters.PageSize
                        });
@@ -77,6 +79,7 @@ namespace ResourceManagement.Controllers
                     return _urlHelper.Link("GetCitiesWithPaging",
                       new
                       {
+                          genre = cityResourceParameters.Genre,
                           pageNumber = cityResourceParameters.PageNumber,
                           pageSize = cityResourceParameters.PageSize
                       });
@@ -102,13 +105,6 @@ namespace ResourceManagement.Controllers
             var cityWithoutPointsOfInterestResult = Mapper.Map<CityWithoutPointsOfInterestDto>(city);
             return Ok(cityWithoutPointsOfInterestResult);
         }
-        
-        [HttpGet()]
-        public IActionResult GetReason()
-        {
-            return Ok();
-        }
-
     }
 
     public enum ResourceUriType
