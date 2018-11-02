@@ -70,7 +70,11 @@ namespace ResourceManagement.Services
         {
             var collectionBeforePaging = _context.Cities
                 .OrderBy(c => c.Name)
-                .ThenBy(c => c.Description);
+                .ThenBy(c => c.Description).AsQueryable();
+
+            var genreForWhereClause = cityResourceParameters.Genre.Trim().ToLowerInvariant();
+
+            collectionBeforePaging = collectionBeforePaging.Where(c => c.Name.ToLowerInvariant() == genreForWhereClause);
 
             return PagedList<City>.Create(collectionBeforePaging, cityResourceParameters.PageNumber, cityResourceParameters.PageSize);            
         }
