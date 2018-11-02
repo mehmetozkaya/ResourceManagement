@@ -72,9 +72,18 @@ namespace ResourceManagement.Services
                 .OrderBy(c => c.Name)
                 .ThenBy(c => c.Description).AsQueryable();
 
-            var genreForWhereClause = cityResourceParameters.Genre.Trim().ToLowerInvariant();
+            if (!string.IsNullOrWhiteSpace(cityResourceParameters.Genre))
+            {
+                var genreForWhereClause = cityResourceParameters.Genre.Trim().ToLowerInvariant();
+                collectionBeforePaging = collectionBeforePaging.Where(c => c.Name.ToLowerInvariant() == genreForWhereClause);
+            }
 
-            collectionBeforePaging = collectionBeforePaging.Where(c => c.Name.ToLowerInvariant() == genreForWhereClause);
+            if (!string.IsNullOrWhiteSpace(cityResourceParameters.SearchQuery))
+            {
+                var searchQuery = cityResourceParameters.SearchQuery.Trim().ToLowerInvariant();
+                collectionBeforePaging = collectionBeforePaging.Where(c => c.Name.ToLowerInvariant().Contains(searchQuery)
+                || c.Description.ToLowerInvariant().Contains(searchQuery));
+            }            
 
             return PagedList<City>.Create(collectionBeforePaging, cityResourceParameters.PageNumber, cityResourceParameters.PageSize);            
         }

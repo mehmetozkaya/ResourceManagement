@@ -63,6 +63,7 @@ namespace ResourceManagement.Controllers
                     return _urlHelper.Link("GetCitiesWithPaging",
                         new
                         {
+                            searchQuery = cityResourceParameters.SearchQuery,
                             genre = cityResourceParameters.Genre,
                             pageNumber = cityResourceParameters.PageNumber - 1,
                             pageSize = cityResourceParameters.PageSize
@@ -71,6 +72,7 @@ namespace ResourceManagement.Controllers
                     return _urlHelper.Link("GetCitiesWithPaging",
                        new
                        {
+                           searchQuery = cityResourceParameters.SearchQuery,
                            genre = cityResourceParameters.Genre,
                            pageNumber = cityResourceParameters.PageNumber + 1,
                            pageSize = cityResourceParameters.PageSize
@@ -79,6 +81,7 @@ namespace ResourceManagement.Controllers
                     return _urlHelper.Link("GetCitiesWithPaging",
                       new
                       {
+                          searchQuery = cityResourceParameters.SearchQuery,
                           genre = cityResourceParameters.Genre,
                           pageNumber = cityResourceParameters.PageNumber,
                           pageSize = cityResourceParameters.PageSize
