@@ -41,4 +41,9 @@ namespace ResourceManagement.Helpers
             return new PagedList<T>(items, count, pageNumber, pageSize);
         }
     }
+
+    public class OrderedPageList<T> : PagedList<T>
+    {
+
+    }
 }
