@@ -44,6 +44,14 @@ namespace ResourceManagement.Helpers
 
     public class OrderedPageList<T> : PagedList<T>
     {
+        public OrderedPageList(List<T> items, int count, int pageNumber, int pageSize) 
+            : base(items, count, pageNumber, pageSize)
+        {
+        }
 
+        private void Order()
+        {
+            //this.Order
+        }
     }
 }
