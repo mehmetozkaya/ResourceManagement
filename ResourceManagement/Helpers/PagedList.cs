@@ -53,5 +53,11 @@ namespace ResourceManagement.Helpers
         {
             //this.Order
         }
+
+        internal int SetId()
+        {
+            return 0;
+        }
     }
+    
 }
