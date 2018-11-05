@@ -71,6 +71,29 @@ namespace ResourceManagement.Helpers
             _dictionaryContext = new Dictionary<int, T>();
         }
 
+        public int Count
+        {
+            get { return _dictionaryContext.Count(); }
+        }
+        public Dictionary<int, T>.KeyCollection Keys
+        {
+            get { return _dictionaryContext.Keys; }
+        }
+        public Dictionary<int, T>.ValueCollection Values
+        {
+            get { return _dictionaryContext.Values; }
+        }
+
+
+        public void Add(int key, T value)
+        {
+            _dictionaryContext.Add(key, value);
+        }
+
+        public bool Remove(int key)
+        {
+            return _dictionaryContext.Remove(key);
+        }
     }
     
 }
