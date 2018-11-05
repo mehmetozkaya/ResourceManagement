@@ -64,6 +64,13 @@ namespace ResourceManagement.Helpers
     {
         private Dictionary<int, T> _dictionaryContext;
         public string Name { get; private set; }
+
+        public Context(string name)
+        {
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            _dictionaryContext = new Dictionary<int, T>();
+        }
+
     }
     
 }
