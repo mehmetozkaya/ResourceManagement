@@ -59,5 +59,11 @@ namespace ResourceManagement.Helpers
             return 0;
         }
     }
+
+    public class Context<T>
+    {
+        private Dictionary<int, T> _dictionaryContext;
+        public string Name { get; private set; }
+    }
     
 }
