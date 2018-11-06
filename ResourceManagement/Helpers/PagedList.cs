@@ -61,7 +61,16 @@ namespace ResourceManagement.Helpers
 
         internal void Shuffle<T>()
         {
+            Random random = new Random();
             int n = this.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                //T value = this[k];
+                //list[k] = list[n];
+                //list[n] = value;
+            }
 
         }
     }
