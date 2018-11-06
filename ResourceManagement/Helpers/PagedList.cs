@@ -58,6 +58,12 @@ namespace ResourceManagement.Helpers
         {
             return 0;
         }
+
+        internal void Shuffle<T>()
+        {
+            int n = this.Count;
+
+        }
     }
 
     public class Context<T>
