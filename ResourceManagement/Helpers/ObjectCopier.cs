@@ -107,6 +107,20 @@ namespace ResourceManagement.Helpers
         {
             throw new NotImplementedException();
         }
+
+        public static T DeepCopy<T>(T obj)
+        {
+            object result = null;
+            using (var ms = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(ms, obj);
+                ms.Position = 0;
+                result = (T)formatter.Deserialize(ms);
+                ms.Close();
+            }
+            return (T)result;
+        }
     }
 
     public class Person : ICloneable
