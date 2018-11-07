@@ -48,4 +48,12 @@ namespace ResourceManagement.Helpers
             return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source), deserializeSettings);
         }
     }
+
+    public class Person : ICloneable
+    {
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
