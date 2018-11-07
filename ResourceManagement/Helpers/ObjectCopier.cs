@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -28,6 +29,23 @@ namespace ResourceManagement.Helpers
                 stream.Seek(0, SeekOrigin.Begin);
                 return (T)formatter.Deserialize(stream);
             }
+        }
+
+        public static T CloneJson<T>(this T source)
+        {
+            // Don't serialize a null object, simply return the default for that object
+            if (Object.ReferenceEquals(source, null))
+            {
+                return default(T);
+            }
+
+            // initialize inner objects individually
+            // for example in default constructor some list property initialized with some values,
+            // but in 'source' these items are cleaned -
+            // without ObjectCreationHandling.Replace default constructor values will be added to result
+            var deserializeSettings = new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace };
+
+            return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source), deserializeSettings);
         }
     }
 }
