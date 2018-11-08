@@ -11,5 +11,13 @@ namespace ResourceManagement.Helpers
         {
             return source?.IndexOf(toCheck, comp) >= 0;
         }
+
+        public static bool ContainsOther(this string source, string toCheck, StringComparison comp)
+        {
+            if (string.IsNullOrEmpty(toCheck) || string.IsNullOrEmpty(source))
+                return true;
+
+            return source.IndexOf(toCheck, comp) >= 0;
+        }
     }
 }
