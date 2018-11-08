@@ -47,5 +47,51 @@ namespace ResourceManagement.Helpers
 
             return true;
         }
+
+        public static bool ExContains(this string fullText, string value)
+        {
+            return ExIndexOf(fullText, value) > -1;
+        }
+
+        public static bool ExEquals(this string text, string textToCompare)
+        {
+            return text.Equals(textToCompare, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static bool ExHasAllEquals(this string text, params string[] textArgs)
+        {
+            for (int index = 0; index < textArgs.Length; index++)
+                if (ExEquals(text, textArgs[index]) == false) return false;
+            return true;
+        }
+
+        public static bool ExHasEquals(this string text, params string[] textArgs)
+        {
+            for (int index = 0; index < textArgs.Length; index++)
+                if (ExEquals(text, textArgs[index])) return true;
+            return false;
+        }
+
+        public static bool ExHasNoEquals(this string text, params string[] textArgs)
+        {
+            return ExHasEquals(text, textArgs) == false;
+        }
+
+        public static bool ExHasNotAllEquals(this string text, params string[] textArgs)
+        {
+            for (int index = 0; index < textArgs.Length; index++)
+                if (ExEquals(text, textArgs[index])) return false;
+            return true;
+        }
+      
+        public static int ExIndexOf(this string fullText, string value)
+        {
+            return fullText.IndexOf(value, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static bool ExNotEquals(this string text, string textToCompare)
+        {
+            return ExEquals(text, textToCompare) == false;
+        }
     }
 }
