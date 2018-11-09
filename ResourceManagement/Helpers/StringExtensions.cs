@@ -94,4 +94,9 @@ namespace ResourceManagement.Helpers
             return ExEquals(text, textToCompare) == false;
         }
     }
+
+    class SimpleCleanup
+    {
+
+    }
 }
