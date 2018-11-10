@@ -109,6 +109,12 @@ namespace ResourceManagement.Helpers
         {
             return _dictionaryContext.Remove(key);
         }
+
+        public void Insert(int key, T value)
+        {
+            _dictionaryContext.Add(key, value);
+        }
+
     }
     
 }
