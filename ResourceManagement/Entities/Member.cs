@@ -37,6 +37,7 @@ namespace ResourceManagement.Entities
 
         public int Something { get; set; }
         public string SomethingElse { get; set; }
+        public string Other { get; set; }
     }
 
 }
