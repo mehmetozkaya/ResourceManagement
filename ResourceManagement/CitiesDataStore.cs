@@ -66,6 +66,23 @@ namespace ResourceManagement
                              Name = "The Louvre",
                              Description = "The world's largest museum." },
                      }
+                },
+                new CityDTO()
+                {
+                    Id = 2,
+                    Name = "Istanbul",
+                    Description = "The one with the cathedral that was never really finished.",
+                    PointsOfInterest = new List<PointOfInterestDto>()
+                     {
+                         new PointOfInterestDto() {
+                             Id = 3,
+                             Name = "Cathedral of Our Lady",
+                             Description = "A Gothic style cathedral, conceived by architects Jan and Pieter Appelmans." },
+                          new PointOfInterestDto() {
+                             Id = 4,
+                             Name = "Antwerp Central Station",
+                             Description = "The the finest example of railway architecture in Belgium." },
+                     }
                 }
             };
 
